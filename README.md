@@ -148,3 +148,24 @@ coll.insert({
 
 #### Find all documents with gender == "f" AND nationality == "american" OR "irish", then sort by nationality (descending):
 - `coll.find({gender: "f", $or: [{nationality: "american"}, {nationality: "irish"}]}).sort({nationality: -1});`
+
+
+Install the shell: 
+
+# Import the MongoDB public GPG Key
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+
+# Create a list file for MongoDB
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+# Reload the local package database
+sudo apt-get update
+
+# Install the MongoDB shell
+sudo apt-get install -y mongodb-mongosh
+
+# Verify the installation
+mongosh --version
+
+# Connect to your MongoDB cluster
+mongosh "mongodb+srv://cluster0.tyh5hdx.mongodb.net/myFirstDB" --username root
